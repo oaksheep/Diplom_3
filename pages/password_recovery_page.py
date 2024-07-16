@@ -1,9 +1,7 @@
 import allure
-from locators.personal_account_locators import PersonalAccountLocators
 from urls import Urls
 from user_data import UserData
 from locators.password_recovery_locators import ResetPasswordLocators
-from locators.main_page_locators import MainPageLocators
 from pages.base_page import BasePage
 
 
@@ -14,8 +12,8 @@ class ResetPassword(BasePage):
 
     @allure.step("Переход на страницу восстановления пароля")
     def go_to_reset_password_page(self):
-        self.check_element_is_clickable(MainPageLocators.BTN_ENTER_ACCOUNT)
-        self.click_on_element(MainPageLocators.BTN_ENTER_ACCOUNT)
+        self.check_element_is_clickable(ResetPasswordLocators.BTN_ENTER_ACCOUNT)
+        self.click_on_element(ResetPasswordLocators.BTN_ENTER_ACCOUNT)
         self.check_element_is_clickable(ResetPasswordLocators.REF_RESTORE_PASSWORD)
         self.click_on_element(ResetPasswordLocators.REF_RESTORE_PASSWORD)
 
@@ -31,10 +29,20 @@ class ResetPassword(BasePage):
     def authenticate(self):
         self.check_element_is_clickable(ResetPasswordLocators.ENTRANCE_FROM_MAIN)
         self.find_element_located_click(ResetPasswordLocators.ENTRANCE_FROM_MAIN)
-        self.check_element_is_clickable(PersonalAccountLocators.BTN_ENTER)
+        self.check_element_is_clickable(ResetPasswordLocators.BTN_ENTER)
         self.find_element_located_click(ResetPasswordLocators.MAIL_INPUT)
         self.find_element_send_key(ResetPasswordLocators.MAIL_INPUT, UserData.USER_MAIL)
-        self.find_element_located_click(PersonalAccountLocators.PASSWORD_INPUT)
-        self.find_element_send_key(PersonalAccountLocators.PASSWORD_INPUT, UserData.USER_PASSWORD)
-        self.find_element_located_click(PersonalAccountLocators.BTN_ENTER)
-        self.check_element_is_clickable(PersonalAccountLocators.PERSONAL_ACCOUNT_BUTTON)
+        self.find_element_located_click(ResetPasswordLocators.PASSWORD_INPUT)
+        self.find_element_send_key(ResetPasswordLocators.PASSWORD_INPUT, UserData.USER_PASSWORD)
+        self.find_element_located_click(ResetPasswordLocators.BTN_ENTER)
+        self.check_element_is_clickable(ResetPasswordLocators.PERSONAL_ACCOUNT_BUTTON)
+
+    @allure.step("Клик по кнопке показать/скрыть пароль")
+    def show_or_hide_password(self):
+        self.find_element_send_key(ResetPasswordLocators.PASSWORD_INPUT_IN_RESET_PAGE, UserData.USER_PASSWORD)
+        self.check_element_is_clickable(ResetPasswordLocators.EYE_BUTTON)
+        self.find_element_located_click(ResetPasswordLocators.EYE_BUTTON)
+
+    @allure.step("Проверка видимости")
+    def show_password(self):
+        return self.find_element_located(ResetPasswordLocators.PASSWORD_VISIBLE)

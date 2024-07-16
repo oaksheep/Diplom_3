@@ -1,7 +1,6 @@
 import allure
 from urls import Urls
 from user_data import UserData
-from locators.password_recovery_locators import ResetPasswordLocators
 from pages.password_recovery_page import ResetPassword
 
 
@@ -26,9 +25,6 @@ class TestResetPassword:
         password_recovery = ResetPassword(driver)
         password_recovery.go_to_reset_password_page()
         password_recovery.reset_confirmation()
-        password_recovery.find_element_send_key(ResetPasswordLocators.PASSWORD_INPUT_IN_RESET_PAGE, UserData.USER_PASSWORD)
-        password_recovery.check_element_is_clickable(ResetPasswordLocators.EYE_BUTTON)
-        password_recovery.find_element_located_click(ResetPasswordLocators.EYE_BUTTON)
-        assert password_recovery.find_element_located(ResetPasswordLocators.PASSWORD_VISIBLE)
-
+        password_recovery.show_or_hide_password()
+        assert password_recovery.show_password() is not None
 
