@@ -1,7 +1,7 @@
 import allure
-from pages.password_recovery_page import ResetPassword
 from urls import Urls
 from pages.main_page import MainPage
+from pages.personal_account_page import PersonalAccount
 
 
 class TestMainPage:
@@ -45,10 +45,9 @@ class TestMainPage:
     @allure.title("Залогиненный пользователь может оформить заказ")
     def test_making_an_order(self, driver):
         main_page = MainPage(driver)
-        reset_password = ResetPassword(driver)
-        reset_password.authenticate()
+        personal_account = PersonalAccount(driver)
+        personal_account.authenticate()
         main_page.drag_and_drop_for_order()
         main_page.make_an_order()
         assert main_page.confirmation_of_order(), "Заказ не сделан"
-
 

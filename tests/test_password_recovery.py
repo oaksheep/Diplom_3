@@ -1,6 +1,5 @@
 import allure
 from urls import Urls
-from user_data import UserData
 from pages.password_recovery_page import ResetPassword
 
 
@@ -27,4 +26,3 @@ class TestResetPassword:
         password_recovery.reset_confirmation()
         password_recovery.show_or_hide_password()
         assert password_recovery.show_password() is not None
-

@@ -33,7 +33,6 @@ class MainPage(BasePage):
     @allure.step("Закрытие модального окна")
     def close_modal(self):
         self.find_element_located_click(MainPageLocators.CLOSE_MODAL)
-        self.check_element_is_clickable(MainPageLocators.BTN_PERSONAL_ACCOUNT)
 
     @allure.step("Подождать пока кнопка зкрытия модального окна не станет кликабельна")
     def close_modal_clickable(self):

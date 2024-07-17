@@ -20,3 +20,5 @@ class MainPageLocators:
     MAKE_AN_ORDER_BUTTON = (By.CLASS_NAME, "button_button__33qZ0")
     CONFIRMATION_OF_MAKING_ORDER = (By.CLASS_NAME, "Modal_modal__image__2nh17")
     PLACE_FOR_INGREDIENTS = (By.XPATH, "//span[@class='constructor-element__text' and text()='Перетяните булочку сюда (верх)']")
+
+

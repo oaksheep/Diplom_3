@@ -4,6 +4,7 @@ from selenium.webdriver.common.by import By
 class PersonalAccountLocators:
 
     PERSONAL_ACCOUNT_BUTTON = (By.XPATH, "//p[text()='Личный Кабинет']")
+    MAIL_INPUT = (By.CLASS_NAME, "input__textfield")
     PASSWORD_INPUT = (By.XPATH, ".//input[@class='text input__textfield text_type_main-default' and @type='password']")
     PASSWORD_INPUT_ACTIVE = (By.CSS_SELECTOR, ".input__container .input_status_active")
     ORDER_HISTORY = (By.XPATH, './/a[@href="/account/order-history"]')
